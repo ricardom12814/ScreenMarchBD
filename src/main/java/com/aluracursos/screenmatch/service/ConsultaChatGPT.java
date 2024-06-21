@@ -3,6 +3,7 @@ package com.aluracursos.screenmatch.service;
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
 
+/*
 public class ConsultaChatGPT {
     public static String obtenerTraduccion(String texto){
         OpenAiService service = new OpenAiService("sk-proj-crtozOLG1YcGumzMmTaxT3BlbkFJW2Xk11D7caWP7CU6RVhK");
@@ -18,3 +19,5 @@ public class ConsultaChatGPT {
 
     }
 }
+
+ */

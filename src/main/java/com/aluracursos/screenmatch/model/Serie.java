@@ -27,8 +27,13 @@ public class Serie {
     private String actores;
     private String sinopsis;
     private String poster;
-    @Transient
+
+    //@Transient - reemplazo por relacion uno a muchos.
+    //el campo que relaciona las tablas series y episodios desde series es:
+    @OneToMany(mappedBy ="serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios;
+
+    public Serie(){}  //constructor generido predeterminado
 
     public Serie(DatosSerie datosSerie){
         this.titulo = datosSerie.titulo();
@@ -45,13 +50,20 @@ public class Serie {
     public String toString() {
         return
                 "genero=" + genero +
-                        ", titulo='" + titulo + '\'' +
-                        ", totalTemporadas=" + totalTemporadas +
-                        ", evaluacion=" + evaluacion +
-                        ", actores='" + actores + '\'' +
-                        ", sinopsis='" + sinopsis + '\'' +
-                        ", poster='" + poster + '\'';
+                ", titulo='" + titulo + '\'' +
+                ", totalTemporadas=" + totalTemporadas +
+                ", evaluacion=" + evaluacion +
+                ", actores='" + actores + '\'' +
+                ", sinopsis='" + sinopsis + '\'' +
+                ", poster='" + poster + '\'' +
+                ", episodios='" + episodios + '\'';
+    }
 
+    public List<Episodio> getEpisodios() {return episodios;}
+
+    public void setEpisodios(List<Episodio> episodios){
+        episodios.forEach(e -> e.setSerie(this));
+        this.episodios = episodios;
     }
 
     public Long getId() {
